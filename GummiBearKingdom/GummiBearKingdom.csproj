@@ -12,6 +12,7 @@
     <Folder Include="Views\Home\" />
     <Folder Include="Views\Products\" />
     <Folder Include="Views\Shared\" />
+    <Folder Include="Views\About\" />
   </ItemGroup>
 
   <ItemGroup>

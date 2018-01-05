@@ -19,7 +19,7 @@ This project was generated with Miscrosoft Visual Studio  version 1.0.0.
         Price: $2.99
         Description: All your favorite flavors in one place! Enjoy the World's Best Gummi Bears in 12 fresh fruity flavors. Flavors include: Cherry, Pink Grapefruit, Watermelon, Strawberry, Orange, Blue Raspberry, Lime, Grape, Green Apple, Mango, Pineapple & Lemon.
 
- * 3. User can visit an about page that explains details about thye company.
+ * 3. User can visit an about page that explains details about the company.
 
     Sample Input: click on About tab.
     Sample Output: Takes you to the About page.
