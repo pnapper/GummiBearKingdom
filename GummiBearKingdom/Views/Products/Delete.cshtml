@@ -1,5 +1,11 @@
 ﻿@model GummiBearKingdom.Models.Product
 
+@{
+    ViewData["Title"] = "Experience - List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<hr />
+<hr />
 <html>
   <head>
       <title>Gummi Bear Kingdom - Delete</title>
@@ -8,7 +14,7 @@
     <h3>Are you sure you want to delete this Product?</h3>
     <hr />
     @Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)
-    @Html.DisplayNameFor(model => model.Price): @Html.DisplayFor(model => model.Price)
+    @Html.DisplayNameFor(model => model.Price): $@Html.DisplayFor(model => model.Price)
     @Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)
     @using (Html.BeginForm())
     {

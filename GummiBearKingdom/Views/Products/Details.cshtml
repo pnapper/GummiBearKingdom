@@ -1,5 +1,12 @@
 ﻿@model GummiBearKingdom.Models.Product
 
+@{
+    ViewData["Title"] = "Experience - List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<hr />
+<hr />
+
 <html>
     <head>
         <title>Product - Details</title>
@@ -7,9 +14,9 @@
     <body>
         <h2>Product Details</h2>
         <hr />
-            @Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)
-            @Html.DisplayNameFor(model => model.Price): @Html.DisplayFor(model => model.Price)
-            @Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)
+            <h4>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h4>
+            <h4>@Html.DisplayNameFor(model => model.Price): @Html.DisplayFor(model => model.Price)</h4>
+            <h4>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)</h4>
             
             <p>@Html.ActionLink("Edit", "Edit", new { id = Model.ProductId }) | 
                @Html.ActionLink("Delete", "Delete", new { id = Model.ProductId }) |

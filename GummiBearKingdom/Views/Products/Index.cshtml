@@ -1,7 +1,11 @@
 ﻿@model IEnumerable<GummiBearKingdom.Models.Product>
 
 @{
+    ViewData["Title"] = "Experience - List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<hr />
+<hr />
 
 <html>
 <head>
@@ -21,5 +25,6 @@
         }
     </ul>
         <p>@Html.ActionLink("Add new Product", "Create")</p>
+        <p>@Html.ActionLink("Home Page", "Index", "Home")</p>
 </body>
 </html>
