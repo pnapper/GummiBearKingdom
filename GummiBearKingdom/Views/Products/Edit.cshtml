@@ -1,6 +1,5 @@
 ﻿@model GummiBearKingdom.Models.Product
 
-
 <html>
   <head>
     <title>Gummi Bear Kingdom - Edit</title>
@@ -24,9 +23,6 @@
 
         @Html.LabelFor(model => model.Description)
         @Html.EditorFor(model => model.Description)
-
-        @Html.LabelFor(model => model.ProductId)
-        @Html.DropDownList("ProductId")
 
         <input type="submit" value="Save" class="btn btn-default" />
     }

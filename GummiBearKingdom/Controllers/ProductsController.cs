@@ -28,13 +28,14 @@ namespace GummiBearKingdom.Controllers
 
         public IActionResult Create()
         {
+            ViewBag.ProductId = new SelectList(db.Products, "ProductId", "Name", "Price", "Description"); 
             return View();
         }
 
         [HttpPost]
-        public IActionResult Create(Product name)
+        public IActionResult Create(Product item)
         {
-            db.Products.Add(name);
+            db.Products.Add(item);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -46,9 +47,9 @@ namespace GummiBearKingdom.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(Product name)
+        public IActionResult Edit(Product item)
         {
-            db.Entry(name).State = EntityState.Modified;
+            db.Entry(item).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
