@@ -10,6 +10,8 @@
         @Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)
         @Html.DisplayNameFor(model => model.Price): @Html.DisplayFor(model => model.Price)
         @Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)
-        <p>@Html.ActionLink("Back to list", "Index")</p>
+        
+        <p>@Html.ActionLink("Edit", "Edit", new { id = Model.ProductId }) | 
+           @Html.ActionLink("Back to list", "Index")</p>
 </body>
 </html>

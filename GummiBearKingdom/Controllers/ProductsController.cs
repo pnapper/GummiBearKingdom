@@ -25,5 +25,47 @@ namespace GummiBearKingdom.Controllers
             Product thisProduct = db.Products.FirstOrDefault(names => names.ProductId == id);
             return View(thisProduct);
         }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Product name)
+        {
+            db.Products.Add(name);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Edit(int id)
+        {
+            var thisProduct = db.Products.FirstOrDefault(names => names.ProductId == id);
+            return View(thisProduct);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Product name)
+        {
+            db.Entry(name).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Delete(int id)
+        {
+            var thisProduct = db.Products.FirstOrDefault(names => names.ProductId == id);
+            return View(thisProduct);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            var thisProduct = db.Products.FirstOrDefault(names => names.ProductId == id);
+            db.Products.Remove(thisProduct);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
