@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace GummiBearKingdom.Models
 {
+
     public class Product
     {
         [Key]

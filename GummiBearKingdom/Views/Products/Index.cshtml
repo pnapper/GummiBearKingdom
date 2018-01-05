@@ -1,0 +1,23 @@
+﻿@model IEnumerable<GummiBearKingdom.Models.Experience>
+
+@{
+}
+
+<html>
+<head>
+    <title>Gummi Bear Kingdom</title>
+</head>
+<body>
+    <h2>Product List</h2>
+        <h4>@Html.DisplayNameFor(model => model.Name)</h4>
+    <ul>
+        @foreach(var listExperience in Model)
+        {
+            <li>
+                @Html.DisplayFor(modelProduct => listProduct.Name)
+            </li>
+        }
+    </ul>
+ 
+</body>
+</html>
