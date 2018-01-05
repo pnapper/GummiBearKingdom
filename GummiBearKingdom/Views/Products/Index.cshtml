@@ -1,4 +1,4 @@
-﻿@model IEnumerable<GummiBearKingdom.Models.Experience>
+﻿@model IEnumerable<GummiBearKingdom.Models.Product>
 
 @{
 }
@@ -10,14 +10,15 @@
 <body>
     <h2>Product List</h2>
         <h4>@Html.DisplayNameFor(model => model.Name)</h4>
+
     <ul>
-        @foreach(var listExperience in Model)
+        @foreach(var listProduct in Model)
         {
             <li>
                 @Html.DisplayFor(modelProduct => listProduct.Name)
+                @Html.ActionLink("Details", "Details", new { id = listProduct.ProductId })
             </li>
         }
     </ul>
- 
 </body>
 </html>
