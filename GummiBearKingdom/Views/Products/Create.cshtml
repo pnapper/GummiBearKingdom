@@ -6,6 +6,7 @@
 }
 <hr />
 <hr />
+
 <h2>Add a product</h2>
 <hr />
 
@@ -20,7 +21,6 @@
     @Html.LabelFor(model => model.Description)
     @Html.TextBoxFor(model => model.Description)
 
-    <input type="submit" value="Create" class="btn btn-default" />
+    <input type="submit" value="Create" class="btn btn-success" />
 }
-
-@Html.ActionLink("Back to List", "Index")
+    <a href="@Url.Action("Index") "class="btn btn-info"">Back to List</a>

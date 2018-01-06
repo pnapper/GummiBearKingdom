@@ -17,9 +17,9 @@
             <h4>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h4>
             <h4>@Html.DisplayNameFor(model => model.Price): @Html.DisplayFor(model => model.Price)</h4>
             <h4>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)</h4>
-            
-            <p>@Html.ActionLink("Edit", "Edit", new { id = Model.ProductId }) | 
-               @Html.ActionLink("Delete", "Delete", new { id = Model.ProductId }) |
-               @Html.ActionLink("Back to list", "Index")</p>
+
+            <a href="@Url.Action("Edit", "Products", new { id = Model.ProductId }) "class="btn btn-info"">Edit</a>
+            <a href="@Url.Action("Delete", "Products", new { id = Model.ProductId }) "class="btn btn-info"">Delete</a>
+            <a href="@Url.Action("Index") "class="btn btn-info"">Back to List</a>
     </body>
 </html>

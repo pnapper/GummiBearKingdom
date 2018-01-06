@@ -7,16 +7,18 @@
 <hr />
 <hr />
 
+
 <html>
   <head>
     <title>Gummi Bear Kingdom - Edit</title>
   </head>
   <body>
-    <h2>Edit Product</h2>
+    <h2>Edit This Product</h2>
     <hr />
-    <h4>Edit this product: @Html.DisplayFor(model => model.Name)
-                           @Html.DisplayFor(model => model.Price)
-                           @Html.DisplayFor(model => model.Description)</h4>
+       <h4>Name: @Html.DisplayFor(model => model.Name)</h4>
+       <h4>Price: @Html.DisplayFor(model => model.Price)</h4>
+       <h4>Description:</h4> 
+       <h5>@Html.DisplayFor(model => model.Description)</h5>
 
     @using (Html.BeginForm())
     {
@@ -24,16 +26,17 @@
 
         @Html.LabelFor(model => model.Name)
         @Html.EditorFor(model => model.Name)
-
+        <br>
         @Html.LabelFor(model => model.Price)
         @Html.EditorFor(model => model.Price)
-
+        <br>
         @Html.LabelFor(model => model.Description)
-        @Html.EditorFor(model => model.Description)
-
-        <input type="submit" value="Save" class="btn btn-default" />
+        @Html.TextBoxFor(model => model.Description)
+        <br>
+        <input type="submit" value="Save" class="btn btn-success"/>
     }
-    <p>@Html.ActionLink("Back to list", "Index")</p>
+        <br>
+        <a href="@Url.Action("Index") "class="btn btn-info"">Back to List</a>
 
   </body>
 </html>

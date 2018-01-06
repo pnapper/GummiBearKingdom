@@ -13,8 +13,7 @@
 </head>
 <body>
     <h2>Product List</h2>
-        <h4>@Html.DisplayNameFor(model => model.Name)</h4>
-
+        
     <ul>
         @foreach(var listProduct in Model)
         {
@@ -24,7 +23,7 @@
             </li>
         }
     </ul>
-        <p>@Html.ActionLink("Add new Product", "Create")</p>
-        <p>@Html.ActionLink("Home Page", "Index", "Home")</p>
+
+        <a href="@Url.Action("Create", "Products") "class="btn btn-info"">Add new Product</a> <a href="@Url.Action("Index", "Home") "class="btn btn-info"">Home Page</a>
 </body>
 </html>
