@@ -15,25 +15,29 @@ namespace GummiBearKingdom.Controllers
     {
         // GET: /<controller>/
         private GummiBearDbContext db = new GummiBearDbContext();
-
         public IActionResult Index()
         {
-            ViewBag.ReviewId = new SelectList(db.Reviews, "ReviewId", "Author", "ContentBody", "Rating");
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult Index(Review item)
-        {
-            db.Reviews.Add(item);
-            db.SaveChanges();
-            return RedirectToAction("Details", "Product", "ProductId");
+            return View(db.Reviews.Include(reviews => reviews.Product).ToList());
         }
 
         public IActionResult Details(int id)
         {
             Review thisReview = db.Reviews.FirstOrDefault(names => names.ReviewId == id);
             return View(thisReview);
+        }
+
+        public IActionResult Create()
+        {
+            ViewBag.ReviewId = new SelectList(db.Reviews, "ReviewId", "Author", "ContentBody", "Rating");
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Review item)
+        {
+            db.Reviews.Add(item);
+            db.SaveChanges();
+            return RedirectToAction("Details", "Product", "ProductId");
         }
 
         public IActionResult Delete(int id)

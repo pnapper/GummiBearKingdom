@@ -1,38 +1,29 @@
-﻿@model GummiBearKingdom.Models.Review
+﻿@model IEnumerable<GummiBearKingdom.Models.Review>
 
 @{
-    ViewData["Title"] = "Create - Review";
+    ViewData["Title"] = "Review - List";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <hr />
 <hr />
 
+<html>
+<head>
+    <title>Gummi Bear Kingdom</title>
+</head>
 <body>
-    <h2>Product Details</h2>
-    <hr />
-        <h4>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h4>
-        <h4>@Html.DisplayNameFor(model => model.Price): @Html.DisplayFor(model => model.Price)</h4>
-        <h4>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)</h4>
+    <h2>Reviews List</h2>
+        
+    <ul>
+        @foreach(var listReview in Model)
+        {
+            <li>
+                @Html.DisplayFor(modelReview => listReview.Author)
+                @Html.DisplayFor(modelReview => listReview.Rating)
 
-<h2>Add a review</h2>
-<hr />
-
-@using (Html.BeginForm())
-{
-    @Html.LabelFor(model => model.Author)
-    @Html.EditorFor(model => model.Author)
-
-    @Html.LabelFor(model => model.ContentBody)
-    @Html.TextBoxFor(model => model.ContentBody)
-
-    @Html.LabelFor(model => model.Rating)
-    @Html.DropdownListFor(model => model.Rating)
-    @Html.DropDownListFor(model => model.Rating, Enumerable.Range(1, 5).Select(i => new SelectListItem 
-     { Text = i.ToString(), Value = i.ToString() }),
-       new { placeholder= Html.DisplayNameFor(x => x.Rating), @class = "form-control" } )
-
-    <input type="submit" value="Add Review" class="btn btn-success" />
-}
-    <a href="@Url.Action(("Details", "Product", "ProductId") "class="btn btn-info"">Back to Product</a>
-
-</body>
+                @Html.ActionLink("Details", "Details", new { id = listReview.ReviewId }) | 
+                @Html.ActionLink("Add a Review", "Reviews", new { id = listReview.ReviewId })
+            </li>
+        }
+    </ul>
+    <a href="@Url.Action("Details", "Product", "ProductId") "class="btn btn-info"">Back to Product</a>
