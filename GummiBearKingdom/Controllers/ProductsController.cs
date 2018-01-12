@@ -49,7 +49,7 @@ namespace GummiBearKingdom.Controllers
         [HttpPost]
         public IActionResult Create(Product item)
         {
-            productRepo.Products.Add(item);
+            productRepo.Save(item);
             //db.SaveChanges();
             return RedirectToAction("Index");
         }

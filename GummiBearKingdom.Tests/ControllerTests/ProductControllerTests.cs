@@ -9,21 +9,37 @@ using System;
 
 namespace GummiBearKingdom.Tests.ControllerTests
 {
-
-    [TestMethod]
-    public void ProductController_AddsProductToIndexModelData_Collection()
+    [TestClass]
+    public class ProductControllerTests
     {
-        // Arrange
-        ProductsController controller = new ProductController();
-        Product testProduc = new Product();
-        testProduct.Description = "test product";
+        Mock<IProductRepository> mock = new Mock<IProductRepository>();
 
-        // Act
-        controller.Create(testProduct);
-        ViewResult indexView = new ProductsController().Index() as ViewResult;
-        var collection = indexView.ViewData.Model as List<Product>;
+        private void DbSetup()
+        {
+            mock.Setup(m => m.Products).Returns(new Product[]
+            {
+                new Product {ProductId = 1, Name = "5 Lb. Bag (Assorted Flavors)", Price = 12.99m, Description = "Yummi Gummis!" },
+                new Product {ProductId = 2, Name = "2.5 Lb. Bag (Assorted Flavors)", Price = 4.99m, Description = "Yummi Gummis!" },
+                new Product {ProductId = 3, Name = "Blue Raspberry 1 lb Bulk Package", Price = 2.99m, Description = "Yummi Gummis!" }
+            }.AsQueryable());
+        }
 
-        // Assert
-        CollectionAssert.Contains(collection, testProduct);
+
+        [TestMethod]
+        public void ProductsController_AddsProductToIndexModelData_Collection()
+        {
+            // Arrange
+            ProductsController controller = new ProductsController();
+            Product testProduct = new Product();
+            testProduct.Description = "test product";
+
+            // Act
+            controller.Create(testProduct);
+            ViewResult indexView = new ProductsController().Index() as ViewResult;
+            var collection = indexView.ViewData.Model as List<Product>;
+
+            // Assert
+            CollectionAssert.Contains(collection, testProduct);
+        }
     }
 }
