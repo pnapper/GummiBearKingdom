@@ -8,7 +8,16 @@ namespace GummiBearKingdom.Models
 {
     public class EFProductRepository : IProductRepository
     {
-        GummiBearDbContext db = new GummiBearDbContext();
+        GummiBearDbContext db;
+       
+        public EFProductRepository()
+        {
+            db = new GummiBearDbContext();
+        }
+        public EFProductRepository(GummiBearDbContext thisDb)
+        {
+            db = thisDb;
+        }
 
         public IQueryable<Product> Products
         { get { return db.Products; } }
@@ -30,6 +39,13 @@ namespace GummiBearKingdom.Models
         public void Remove(Product product)
         {
             db.Products.Remove(product);
+            db.SaveChanges();
+        }
+
+        public void ClearAll()
+        {
+            List<Product> AllProducts = db.Products.ToList();
+            db.Products.RemoveRange(AllProducts);
             db.SaveChanges();
         }
     }

@@ -10,9 +10,10 @@ using System;
 namespace GummiBearKingdom.Tests.ControllerTests
 {
     [TestClass]
-    public class ProductControllerTests
+    public class ProductControllerTests : IDisposable
     {
         Mock<IProductRepository> mock = new Mock<IProductRepository>();
+        EFProductRepository db = new EFProductRepository(new TestDbContext());
 
         private void DbSetup()
         {
@@ -75,6 +76,7 @@ namespace GummiBearKingdom.Tests.ControllerTests
             // Assert
             CollectionAssert.Contains(collection, testProduct);
         }
+
         [TestMethod]
         public void Mock_PostViewResultCreate_ViewResult()
         {
@@ -98,6 +100,7 @@ namespace GummiBearKingdom.Tests.ControllerTests
             Assert.IsInstanceOfType(resultView, typeof(ViewResult));
 
         }
+
         [TestMethod]
         public void Mock_GetDetails_ReturnsView()
         {
@@ -120,6 +123,30 @@ namespace GummiBearKingdom.Tests.ControllerTests
             // Assert
             Assert.IsInstanceOfType(resultView, typeof(ViewResult));
             Assert.IsInstanceOfType(model, typeof(Product));
+        }
+
+        [TestMethod]
+        public void DB_CreatesNewEntries_Collection()
+        {
+            // Arrange
+            ProductsController controller = new ProductsController(db);
+            Product testProduct = new Product();
+            testProduct.Name = "5 Lb. Bag (Assorted Flavors)";
+            testProduct.Price = 12.99m;
+            testProduct.Description = "Yummi Gummis!";
+            testProduct.ProductId = 1;
+
+            // Act
+            controller.Create(testProduct);
+            var collection = (controller.Index() as ViewResult).ViewData.Model as List<Product>;
+
+            // Assert
+            CollectionAssert.Contains(collection, testProduct);
+        }
+
+        public void Dispose()
+        {
+            db.ClearAll();
         }
     }
 }
