@@ -13,6 +13,7 @@
     <Folder Include="Views\Products\" />
     <Folder Include="Views\Shared\" />
     <Folder Include="Views\About\" />
+    <Folder Include="Views\Reviews\" />
   </ItemGroup>
 
   <ItemGroup>

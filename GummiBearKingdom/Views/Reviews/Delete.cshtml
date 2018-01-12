@@ -1,0 +1,26 @@
+﻿@model GummiBearKingdom.Models.Review
+
+@{
+    ViewData["Title"] = "Experience - List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<hr />
+<hr />
+<html>
+  <head>
+      <title>Gummi Bear Kingdom - Delete</title>
+  </head>
+  <body>
+    <h3>Are you sure you want to delete this Review?</h3>
+    <hr />
+    <h4>@Html.DisplayNameFor(model => model.Author): @Html.DisplayFor(model => model.Author)</h4>
+     <h4>@Html.DisplayNameFor(model => model.ContentBody): $@Html.DisplayFor(model => model.ContentBody)</h4>
+     <h4>@Html.DisplayNameFor(model => model.Rating): @Html.DisplayFor(model => model.Rating)</h4>
+<hr />
+        @using (Html.BeginForm())
+    {
+        <input type="submit" value="Delete" class="btn btn-danger" />
+    }
+        <a href="@Url.Action("Details", "Product", "ProductId") "class="btn btn-info"">Back to Product</a>
+  </body>
+</html>

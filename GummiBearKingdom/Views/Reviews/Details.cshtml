@@ -1,0 +1,24 @@
+﻿@model GummiBearKingdom.Models.Review
+
+@{
+    ViewData["Title"] = "Experience - List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<hr />
+<hr />
+
+<html>
+    <head>
+        <title>Review - Details</title>
+    </head>
+    <body>
+        <h2>Review Details</h2>
+        <hr />
+            <h4>@Html.DisplayNameFor(model => model.Author): @Html.DisplayFor(model => model.Author)</h4>
+            <h4>@Html.DisplayNameFor(model => model.ContentBody): @Html.DisplayFor(model => model.ContentBody)</h4>
+            <h4>@Html.DisplayNameFor(model => model.Rating): @Html.DisplayFor(model => model.Rating)</h4>
+
+            <a href="@Url.Action("Delete", "Reviews", new { id = Model.ReviewId }) "class="btn btn-info"">Delete</a>
+            <a href="@Url.Action("Details", "Product", "ProductId") "class="btn btn-info"">Back to Product</a>
+    </body>
+</html>
