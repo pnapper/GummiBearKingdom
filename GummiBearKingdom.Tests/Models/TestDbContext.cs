@@ -5,6 +5,7 @@ namespace GummiBearKingdom.Models
     public class TestDbContext : GummiBearDbContext
     {
         public override DbSet<Product> Products { get; set; }
+        public override DbSet<Review> Reviews { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {

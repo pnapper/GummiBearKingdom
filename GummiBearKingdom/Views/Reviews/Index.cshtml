@@ -22,7 +22,7 @@
                 @Html.DisplayFor(modelReview => listReview.Rating)
 
                 @Html.ActionLink("Details", "Details", new { id = listReview.ReviewId }) | 
-                @Html.ActionLink("Add a Review", "Reviews", new { id = listReview.ReviewId })
+                @Html.ActionLink("Add a Review",  new { id = listReview.ReviewId })
             </li>
         }
     </ul>

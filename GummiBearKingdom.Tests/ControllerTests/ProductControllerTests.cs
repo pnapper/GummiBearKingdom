@@ -164,26 +164,6 @@ namespace GummiBearKingdom.Tests.ControllerTests
             Assert.AreEqual(foundProduct.Name, "2.5 Lb. Bag (Assorted Flavors)");
         }
 
-        [TestMethod]
-        public void DB_DeletesEntries_Collection()
-        {
-            ProductsController controller = new ProductsController(db);
-            Product testProduct = new Product();
-            testProduct.Name = "5 Lb. Bag (Assorted Flavors)";
-            testProduct.Price = 12.99m;
-            testProduct.Description = "Yummi Gummis!";
-            testProduct.ProductId = 1;
-
-            // Act
-            controller.Create(testProduct);
-            controller.Delete(testProduct.ProductId);
-            var foundProduct = (controller.Details(testProduct.ProductId) as ViewResult).ViewData.Model as Product;
-
-            // Assert
-            Assert.AreEqual(foundProduct.Name, null);
-        }
-
-
         public void Dispose()
         {
             db.ClearAll();

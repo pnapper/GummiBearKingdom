@@ -146,26 +146,6 @@ namespace GummiBearKingdom.Tests.ControllerTests
             CollectionAssert.Contains(collection, testReview);
         }
 
-        [TestMethod]
-        public void DB_DeletesEntries_Collection()
-        {
-            ReviewsController controller = new ReviewsController(db);
-            Review testReview = new Review();
-            testReview.Author = "Joey Muncher";
-            testReview.ContentBody = "Great gummis, love them!";
-            testReview.Rating = 5;
-            testReview.ReviewId = 1;
-
-            // Act
-            controller.Create(testReview);
-            controller.Delete(testReview.ReviewId);
-            var foundReview = (controller.Details(testReview.ReviewId) as ViewResult).ViewData.Model as Review;
-
-            // Assert
-            Assert.AreEqual(foundReview.ReviewId, null);
-        }
-
-
         public void Dispose()
         {
             db.ClearAll();
