@@ -26,9 +26,10 @@ namespace GummiBearKingdom.Tests.ControllerTests
         }
 
         [TestMethod]
-        public void ReviewsController_AddsReviewToIndexModelData_Collection()
+        public void Mock_AddsReviewToIndexModelData_Collection()
         {
             // Arrange
+            DbSetup();
             ReviewsController controller = new ReviewsController();
             Review testReview = new Review();
             testReview.Author = "Joey Muncher";

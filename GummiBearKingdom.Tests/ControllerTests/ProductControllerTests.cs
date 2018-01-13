@@ -27,7 +27,7 @@ namespace GummiBearKingdom.Tests.ControllerTests
 
 
         [TestMethod]
-        public void ProductsController_AddsProductToIndexModelData_Collection()
+        public void Mock_AddsProductToIndexModelData_Collection()
         {
             // Arrange
             ProductsController controller = new ProductsController();
