@@ -38,7 +38,9 @@ namespace GummiBearKingdom.Controllers
 
         public IActionResult Details(int id)
         {
-            Review thisReview = reviewRepo.Reviews.FirstOrDefault(names => names.ReviewId == id);
+            Review thisReview = reviewRepo.Reviews
+                                            .Include(x => x.Product)
+                                            .FirstOrDefault(names => names.ReviewId == id);
             return View(thisReview);
         }
 
@@ -55,7 +57,7 @@ namespace GummiBearKingdom.Controllers
         {
             reviewRepo.Save(review);
             //db.SaveChanges();
-            return RedirectToAction("Details", "Product", new { id = review.ProductId });
+            return RedirectToAction("Details", "Products", new { id = review.ProductId });
         }
 
         public IActionResult Delete(int id)

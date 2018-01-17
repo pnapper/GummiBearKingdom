@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using GummiBearKingdom.Models;
+using GummiBearKingdom.Tests.Models;
 using GummiBearKingdom.Controllers;
 using Moq;
 using System.Linq;

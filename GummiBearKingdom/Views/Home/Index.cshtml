@@ -25,6 +25,17 @@
 <!--    <p>@Html.ActionLink("Product list", "Index", "Products")</p>
     <p>@Html.ActionLink("About us", "Index", "About")</p>-->
 
+    <h4>Top Rated Products</h4>
+        @foreach(var product in Model)
+        {
+
+            
+            <a href='@Url.Action("Details", "Product", new { id = product.ProductId })'><h5>@product.Name</h5></a>
+            <p>$@product.Price</p> 
+            <p>Average Rating: @product.GetAverageRating()</p>
+            <p>@product.Description</p>                
+        }
+
     <a href="@Url.Action("Index", "Products") "class="btn btn-info"">Product List</a> 
     <a href="@Url.Action("Index", "About", "About us") "class="btn btn-info"">About Us</a>
 </body>

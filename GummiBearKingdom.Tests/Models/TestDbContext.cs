@@ -1,6 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using GummiBearKingdom.Models;
+using Microsoft.EntityFrameworkCore;
 
-namespace GummiBearKingdom.Models
+namespace GummiBearKingdom.Tests.Models
 {
     public class TestDbContext : GummiBearDbContext
     {

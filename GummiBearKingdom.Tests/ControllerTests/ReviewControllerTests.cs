@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using GummiBearKingdom.Models;
+using GummiBearKingdom.Tests.Models;
 using GummiBearKingdom.Controllers;
 using Moq;
 using System.Linq;
@@ -30,7 +31,7 @@ namespace GummiBearKingdom.Tests.ControllerTests
         {
             // Arrange
             DbSetup();
-            ReviewsController controller = new ReviewsController();
+            ReviewsController controller = new ReviewsController(mock.Object);
             Review testReview = new Review();
             testReview.Author = "Joey Muncher";
             testReview.ContentBody = "Great gummis, love them!";
@@ -38,8 +39,7 @@ namespace GummiBearKingdom.Tests.ControllerTests
             testReview.ReviewId = 1;
 
             // Act
-            controller.Create(testReview);
-            ViewResult indexView = new ReviewsController().Index() as ViewResult;
+            ViewResult indexView = controller.Index() as ViewResult;
             var collection = indexView.ViewData.Model as List<Review>;
 
             // Assert
@@ -140,7 +140,6 @@ namespace GummiBearKingdom.Tests.ControllerTests
             testReview.ReviewId = 1;
 
             // Act
-            controller.Create(testReview);
             var collection = (controller.Index() as ViewResult).ViewData.Model as List<Review>;
 
             // Assert
