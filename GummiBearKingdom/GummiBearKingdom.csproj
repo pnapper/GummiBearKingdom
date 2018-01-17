@@ -12,7 +12,6 @@
     <Folder Include="Views\Home\" />
     <Folder Include="Views\Products\" />
     <Folder Include="Views\Shared\" />
-    <Folder Include="Views\About\" />
     <Folder Include="Views\Reviews\" />
     <Folder Include="Models\Repositories\" />
   </ItemGroup>
@@ -30,4 +29,7 @@
      <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="1.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Controllers\AboutController.cs" />
+  </ItemGroup>
 </Project>

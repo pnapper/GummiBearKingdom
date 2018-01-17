@@ -22,5 +22,15 @@ namespace GummiBearKingdom.Controllers
                                                         .OrderByDescending(x => x.ProductId).Take(3).ToList();
             return View(topRatedProducts);
         }
+
+        public IActionResult About()
+        {
+            return View();
+        }
+
+        public IActionResult Contact()
+        {
+            return View();
+        }
     }
 }
