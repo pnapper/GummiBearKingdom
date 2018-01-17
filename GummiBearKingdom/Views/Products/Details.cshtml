@@ -21,7 +21,7 @@
 
             <a href="@Url.Action("Edit", "Products", new { id = Model.ProductId }) "class="btn btn-info"">Edit</a>
             <a href="@Url.Action("Delete", "Products", new { id = Model.ProductId }) "class="btn btn-info"">Delete</a>
-            <a href="@Url.Action("Reviews", new { id = Model.ProductId }) "class="btn btn-info"">Add Review</a>
+            <a href="@Url.Action("Create", "Reviews", new { id = Model.ProductId }) "class="btn btn-info"">Add Review</a>
             <a href="@Url.Action("Index") "class="btn btn-info"">Back to List</a>
     </body>
 </html>

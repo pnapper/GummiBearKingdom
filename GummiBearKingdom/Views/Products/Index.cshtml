@@ -20,7 +20,7 @@
             <li>
                 @Html.DisplayFor(modelProduct => listProduct.Name)
                 @Html.ActionLink("Details", "Details", new { id = listProduct.ProductId }) | 
-                @Html.ActionLink("Add a Review", "Reviews", new { id = listProduct.ProductId })
+                @Html.ActionLink("Add a Review", "Create","Reviews", new { id = listProduct.ProductId })
             </li>
         }
     </ul>
