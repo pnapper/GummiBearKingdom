@@ -22,8 +22,8 @@
                 @Html.DisplayFor(modelReview => listReview.Rating)
 
                 @Html.ActionLink("Details", "Details", new { id = listReview.ReviewId }) | 
-                @Html.ActionLink("Add a Review",  new { id = listReview.ReviewId })
+                @Html.ActionLink("Add a Review", "Create", new { id = listReview.ReviewId })
             </li>
         }
     </ul>
-    <a href="@Url.Action("Details", "Product", "ProductId") "class="btn btn-info"">Back to Product</a>
+    <a href="@Url.Action("Index", "Products") "class="btn btn-info"">Back to Product List</a>

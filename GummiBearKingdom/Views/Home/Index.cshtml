@@ -21,16 +21,14 @@
 <body>
     <h2>Welcome to Gummi Bear Kingdom!</h2>
 
-    <h4>The World's Best Gummi Bears and Candies!'</h4>
+    <h4>The World's Best Gummi Bears and Candies!</h4>
 <!--    <p>@Html.ActionLink("Product list", "Index", "Products")</p>
     <p>@Html.ActionLink("About us", "Index", "About")</p>-->
 
     <h4>Top Rated Products</h4>
         @foreach(var product in Model)
-        {
-
-            
-            <a href='@Url.Action("Details", "Product", new { id = product.ProductId })'><h5>@product.Name</h5></a>
+        {          
+            <a href='@Url.Action("Details", "Products", new { id = product.ProductId })'><h5>@product.Name</h5></a>
             <p>$@product.Price</p> 
             <p>Average Rating: @product.GetAverageRating()</p>
             <p>@product.Description</p>                
