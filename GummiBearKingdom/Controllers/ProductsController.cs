@@ -36,7 +36,9 @@ namespace GummiBearKingdom.Controllers
 
         public IActionResult Details(int id)
         {
-            Product thisProduct = productRepo.Products.FirstOrDefault(names => names.ProductId == id);
+            Product thisProduct = productRepo.Products
+                                             .Include(x => x.Reviews)
+                                             .FirstOrDefault(names => names.ProductId == id);
             return View(thisProduct);
         }
 

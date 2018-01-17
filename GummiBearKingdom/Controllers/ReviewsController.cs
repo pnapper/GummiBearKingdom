@@ -13,8 +13,10 @@ namespace GummiBearKingdom.Controllers
 {
     public class ReviewsController : Controller
     {
+
         // GET: /<controller>/
         private IReviewRepository reviewRepo;  // New!
+        public IProductRepository productRepo = new EFProductRepository();
 
         public ReviewsController(IReviewRepository repo = null)
         {
@@ -40,18 +42,20 @@ namespace GummiBearKingdom.Controllers
             return View(thisReview);
         }
 
-        public IActionResult Create()
+        public IActionResult Create(int id)
         {
-            //ViewBag.ReviewId = new SelectList(db.Reviews, "ReviewId", "Name", "Price", "Description"); 
+            //ViewBag.ReviewId = new SelectList(reviewRepo.Reviews, "ReviewId", "Name", "Price", "Description"); 
+            var thisProduct = productRepo.Products.FirstOrDefault(x => x.ProductId == id);
+            ViewBag.product = thisProduct;
             return View();
         }
 
         [HttpPost]
-        public IActionResult Create(Review item)
+        public IActionResult Create(Review review)
         {
-            reviewRepo.Save(item);
+            reviewRepo.Save(review);
             //db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Details", "Product", new { id = review.ProductId });
         }
 
         public IActionResult Delete(int id)

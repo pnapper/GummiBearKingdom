@@ -15,13 +15,23 @@
         <h2>Product Details</h2>
         <hr />
             <h4>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h4>
-            <h4>@Html.DisplayNameFor(model => model.Price): @Html.DisplayFor(model => model.Price)</h4>
+            <h4>@Html.DisplayNameFor(model => model.Price): $@Html.DisplayFor(model => model.Price)</h4>
             <h4>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)</h4>
-            <h4>@Html.DisplayNameFor(model => model.Reviews): @Html.DisplayFor(model => model.Reviews)</h4>
+
 
             <a href="@Url.Action("Edit", "Products", new { id = Model.ProductId }) "class="btn btn-info"">Edit</a>
             <a href="@Url.Action("Delete", "Products", new { id = Model.ProductId }) "class="btn btn-info"">Delete</a>
             <a href="@Url.Action("Create", "Reviews", new { id = Model.ProductId }) "class="btn btn-info"">Add Review</a>
             <a href="@Url.Action("Index") "class="btn btn-info"">Back to List</a>
+
+        <h3>Reviews</h3>
+        @foreach(var review in @Model.Reviews)
+        {
+            <p> Author: <strong>@review.Author</strong>, 
+                Rating: <strong>@review.Rating</strong> stars, 
+                Comments: <strong>@review.ContentBody</strong> </p>
+                          
+            <p> @Html.ActionLink("Delete", "Delete", "Review", new { id = review.ReviewId })</p>
+        }
     </body>
 </html>
